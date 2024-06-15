@@ -50,8 +50,8 @@ jobs:
         id: Skopeo 
         run: |
           #!/usr/bin/env bash
-          skopeo copy docker://docker.io/${{ github.event.inputs.IMAGE_NAME }} docker://${{ secrets.ALI_REGISTRY }}/cri/${{ github.event.inputs.IMAGE_NAME }}
-          continue-on-error: true
+          skopeo copy docker://docker.io/${{ github.event.inputs.IMAGE_NAME }} docker://${{ secrets.ALI_REGISTRY }}/cri/${{ github.event.inputs.NEW_NAME }}
+        continue-on-error: true
 
       - name: 检查镜像推送成功
         if: ${{ steps.Skopeo.outcome == 'success' }}
